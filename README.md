@@ -1,4 +1,16 @@
-# Demo Project
-# Local_Dictionary_Munda	
+# Dictionary Of Munda's
 
-A Dictionary For Munda-Bengali Language.
+
+##  <span style='color:#3333ff;'> A Dictionary For Finding Meanings Of Words Used In Munda Community In Bengali as well as Conversely Bengali Words' Meaning In Munda Language.  </span>
+
+--------
+--------
+Developer [Twitter](https://mobile.twitter.com/iamsandipanbera)
+
+--------
+--------
+
+
+
+
+
