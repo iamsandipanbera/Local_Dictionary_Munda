@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dictionary of Mundas</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="about_header"> <u> Dictionary Of Mundas</u> </string>
+	<string name="dialogue">Sorry For The Ads But It Is The Only Way To Remain Our Project Free And Continue The Project</string>
+	
+</resources>

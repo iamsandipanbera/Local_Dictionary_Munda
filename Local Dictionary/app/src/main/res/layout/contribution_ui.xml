@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="wrap_content"
+	android:background="#FFFFFF">
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="#FFFFFF"
+		android:layout_alignParentTop="true"
+		android:id="@+id/contributionuiLinearLayout1">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:text="CONTRIBUTE"
+			android:gravity="center"
+			android:layout_gravity="center"
+			android:typeface="monospace"
+			android:textStyle="bold"
+			android:layout_margin="10dp"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:text="If You Want To Contribute By Adding Word/s Or, You Feel Somwhere There Need A Modification/Correction Or Kind Of Issue Related To The Language.  Mail Us."
+			android:padding="10dp"
+			android:layout_marginTop="40dp"
+			android:typeface="serif"
+			android:gravity="center"
+			android:textColor="#000000"/>
+
+		<ImageButton
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center"
+			android:background="@drawable/mail_ic"
+			android:layout_margin="10dp"
+			android:onClick="contribution_mail"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="wrap_content"
+			android:text="Humans,help Me to Make My Database Rich I Will Help You to Make Your Vocabulary Rich."
+			android:layout_margin="10dp"
+			android:layout_gravity="center"
+			android:typeface="monospace"
+			android:textColor="#365865"/>
+
+		<com.google.android.gms.ads.AdView
+			xmlns:ads="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/adView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			ads:adSize="BANNER"
+			ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+
+		</com.google.android.gms.ads.AdView>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:text="#DevSan"
+		android:layout_below="@id/contributionuiLinearLayout1"
+		android:layout_alignParentBottom="true"
+		android:gravity="bottom"
+		android:layout_centerHorizontal="true"
+		android:typeface="serif"
+		android:textColor="#000000"
+		android:textStyle="bold|italic"
+		android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>
+
