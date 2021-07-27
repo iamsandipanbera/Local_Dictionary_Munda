@@ -1,191 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical"
-	android:background="#FFFFFF">
-
-	<RelativeLayout
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
 		android:background="#FFFFFF">
 
-		<TextView
+		<RelativeLayout
 			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
-			android:text="@string/about_header"
-			android:layout_centerHorizontal="true"
-			android:id="@+id/aboutuiTextView1"
-			android:layout_marginTop="8dp"
-			android:typeface="serif"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_width="wrap_content"
-			android:text="This Application Is Made For Helping The Munda Community. This Tiny Tech Piece Will Help To Find The Meaning Of Munda Community Word In Bengali."
-			android:layout_below="@id/aboutuiTextView1"
-			android:padding="5dp"
-			android:typeface="serif"
-			android:gravity="center"
-			android:textColor="#000000"
-			android:id="@+id/aboutuiTextView2"
-			android:textSize="16sp"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
-			android:text="Made By"
-			android:layout_below="@id/aboutuiTextView2"
-			android:gravity="center"
-			android:layout_centerHorizontal="true"
-			android:id="@+id/aboutuiTextView3"
-			android:textSize="15sp"
-			android:layout_marginTop="15dp"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_width="wrap_content"
-			android:text="DevSan"
-			android:layout_below="@id/aboutuiTextView3"
-			android:layout_centerHorizontal="true"
-			android:id="@+id/aboutuiTextView4"
-			android:typeface="monospace"
-			android:textColor="#000000"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_width="wrap_content"
-			android:text="In Collaboration With ❤"
-			android:layout_below="@id/aboutuiTextView4"
-			android:id="@+id/aboutuiTextView5"
-			android:layout_centerHorizontal="true"
-			android:typeface="sans"
-			android:textColor="#595959"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_width="wrap_content"
-			android:text="Somnath Singh"
-			android:layout_below="@id/aboutuiTextView5"
-			android:layout_centerHorizontal="true"
-			android:typeface="monospace"
-			android:textColor="#000000"
-			android:id="@+id/aboutuiTextView6"/>
-
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:layout_width="wrap_content"
-			android:text="CREDIT"
-			android:layout_below="@id/aboutuiTextView6"
-			android:layout_centerHorizontal="true"
-			android:textSize="30sp"
-			android:typeface="serif"
-			android:textColor="#000000"
-			android:id="@+id/aboutuiTextView7"/>
-
-		<View
-			android:background="?android:attr/dividerVertical"
-			android:layout_height="1dp"
 			android:layout_width="match_parent"
-			android:layout_below="@id/aboutuiTextView2"/>
-
-	</RelativeLayout>
-
-	<View
-		style="@style/Divider"/>
-
-	<ScrollView
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:background="#FFFFFF"
-		android:layout_marginTop="13dp">
-
-		<LinearLayout
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:orientation="vertical"
 			android:background="#FFFFFF">
 
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:text="@string/about_header"
+				android:layout_centerHorizontal="true"
+				android:id="@+id/aboutuiTextView1"
+				android:layout_marginTop="8dp"
+				android:typeface="serif"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text="This Application Is Made For Helping The Munda Community. This Tiny Tech Piece Will Help To Find The Meaning Of Munda Community Word In Bengali."
+				android:layout_below="@id/aboutuiTextView1"
+				android:padding="5dp"
+				android:typeface="serif"
+				android:gravity="center"
+				android:textColor="#000000"
+				android:id="@+id/aboutuiTextView2"
+				android:textSize="16sp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:text="Made By"
+				android:layout_below="@id/aboutuiTextView2"
+				android:gravity="center"
+				android:layout_centerHorizontal="true"
+				android:id="@+id/aboutuiTextView3"
+				android:textSize="15sp"
+				android:layout_marginTop="15dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text="DevSan"
+				android:layout_below="@id/aboutuiTextView3"
+				android:layout_centerHorizontal="true"
+				android:id="@+id/aboutuiTextView4"
+				android:typeface="monospace"
+				android:textColor="#000000"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text="In Collaboration With ❤"
+				android:layout_below="@id/aboutuiTextView4"
+				android:id="@+id/aboutuiTextView5"
+				android:layout_centerHorizontal="true"
+				android:typeface="sans"
+				android:textColor="#595959"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text="Somnath Singh"
+				android:layout_below="@id/aboutuiTextView5"
+				android:layout_centerHorizontal="true"
+				android:typeface="monospace"
+				android:textColor="#000000"
+				android:id="@+id/aboutuiTextView6"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text="CREDIT"
+				android:layout_below="@id/aboutuiTextView6"
+				android:layout_centerHorizontal="true"
+				android:textSize="30sp"
+				android:typeface="serif"
+				android:textColor="#000000"
+				android:id="@+id/aboutuiTextView7"/>
+
+			<View
+				android:background="?android:attr/dividerVertical"
+				android:layout_height="1dp"
+				android:layout_width="match_parent"
+				android:layout_below="@id/aboutuiTextView2"/>
+
+		</RelativeLayout>
+
+		<View
+			style="@style/Divider"/>
+
+		<ScrollView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:background="#FFFFFF"
+			android:layout_marginTop="13dp">
+
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
-				android:orientation="horizontal">
+				android:orientation="vertical"
+				android:background="#FFFFFF">
 
-				<TextView
+				<LinearLayout
 					android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:layout_width="wrap_content"
-					android:text="APP iDEA:"
-					android:layout_gravity="left|center"
-					android:layout_margin="10dp"
-					android:textColor="#000000"
-					android:typeface="monospace"/>
-
-				<RelativeLayout
-					android:layout_height="200dp"
-					android:layout_width="200dp"
-					android:background="@drawable/somnath_img">
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:textAppearance="?android:attr/textAppearanceMedium"
-						android:layout_width="match_parent"
-						android:text="Somnath Singh"
-						android:layout_alignParentBottom="true"
-						android:layout_centerInParent="true"
-						android:textColor="#000000"
-						android:background="#B3FFFFFF"
-						android:gravity="center"/>
-
-				</RelativeLayout>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:orientation="horizontal"
-				android:layout_marginTop="10dp">
-
-				<TextView
-					android:layout_height="wrap_content"
-					android:layout_gravity="left|center"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:layout_width="wrap_content"
-					android:text="Designer and Developer:"
-					android:layout_margin="5dp"
-					android:textColor="#000000"
-					android:typeface="monospace"/>
-
-				<RelativeLayout
-					android:layout_height="100dp"
-					android:layout_width="100dp"
-					android:background="@drawable/devsan_logo">
+					android:orientation="horizontal">
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="DevSan"
-						android:layout_alignParentBottom="true"
-						android:layout_centerInParent="true"
-						android:textColor="#000000"/>
+						android:text="APP iDEA:"
+						android:layout_gravity="left|center"
+						android:layout_margin="10dp"
+						android:textColor="#000000"
+						android:typeface="monospace"/>
 
-				</RelativeLayout>
+					<RelativeLayout
+						android:layout_height="200dp"
+						android:layout_width="200dp"
+						android:background="@drawable/somnath_img">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:layout_width="match_parent"
+							android:text="Somnath Singh"
+							android:layout_alignParentBottom="true"
+							android:layout_centerInParent="true"
+							android:textColor="#000000"
+							android:background="#B3FFFFFF"
+							android:gravity="center"/>
+
+					</RelativeLayout>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:layout_marginTop="10dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_gravity="left|center"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content"
+						android:text="Designer and Developer:"
+						android:layout_margin="5dp"
+						android:textColor="#000000"
+						android:typeface="monospace"/>
+
+					<RelativeLayout
+						android:layout_height="100dp"
+						android:layout_width="100dp"
+						android:background="@drawable/devsan_logo">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:layout_width="wrap_content"
+							android:text="DevSan"
+							android:layout_alignParentBottom="true"
+							android:layout_centerInParent="true"
+							android:textColor="#000000"/>
+
+					</RelativeLayout>
+
+				</LinearLayout>
 
 			</LinearLayout>
 
-		</LinearLayout>
+		</ScrollView>
 
-	</ScrollView>
+	</LinearLayout>
 
-</LinearLayout>
+
 

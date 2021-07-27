@@ -1,57 +1,33 @@
 package com.devsan.loctionary;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.support.v4.widget.DrawerLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.os.Bundle;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.os.Handler;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MenuInflater;
-
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.*;
-
-import android.graphics.Color;
-import java.io.*;
-import com.google.android.gms.ads.*;
+import android.content.*;
 import android.content.pm.*;
+import android.database.*;
 import android.net.*;
+import android.os.*;
+import android.support.design.widget.*;
+import android.support.v4.view.*;
+import android.support.v4.widget.*;
+import android.support.v7.app.*;
+import android.support.v7.widget.*;
+import android.view.*;
+import com.devsan.loctionary.*;
+//import com.google.android.gms.ads.*;
+import java.io.*;
+import java.util.regex.*;
+import de.cketti.library.changelog.*;
 
-import java.lang.*;
-import java.util.*;
 
 //DevSan : Sandipan
 
 public class MainActivity extends AppCompatActivity
-implements NavigationView.OnNavigationItemSelectedListener {
+implements NavigationView.OnNavigationItemSelectedListener
+{
 
     private Toolbar toolbar;
     private DrawerLayout d;
 	private NavigationView n;
-	
+
 	SearchView search;
 
     static DatabaseHelper myDbHelper;
@@ -59,41 +35,45 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
     SimpleCursorAdapter suggestionAdapter;
 
-	private AdView adView;
+	//private AdView adView;
 
-	private InterstitialAd interstitialAd;
-	
-	
-    
+	//private InterstitialAd interstitialAd;
+
+	DatabaseHelper db;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+		myDbHelper = new DatabaseHelper(MainActivity.this);
         toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         d = findViewById(R.id.mainDrawerLayout);
 		n = findViewById(R.id.nav_view);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
+
+		myDbHelper = new DatabaseHelper(MainActivity.this);
+		//db.dbCheck();
+        //long id = 0;
+		//int profile_counts = myDbHelper.getTaskCount(id);
+		//Log.d("DevSan", "Bro you have " + profile_counts + " words in your database");
         ActionBarDrawerToggle t = new ActionBarDrawerToggle(this, d, toolbar, R.string.app_name, R.string.app_name);
 		d.setDrawerListener(t);
 		t.syncState();
-		 n.setNavigationItemSelectedListener(this);
-		n.setItemIconTintList(null);
+		n.setNavigationItemSelectedListener(this);
+		n.setItemIconTintList(null); // menu item icons color set
         search =  (SearchView) findViewById(R.id.search_view);
-		
-		MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
-        adView = (AdView)findViewById(R.id.adView);
-        AdRequest request = new AdRequest.Builder().build();
-        adView.loadAd(request);
-		
-		interstitialAd= new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        AdRequest adRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(adRequest);
+		search.setBackgroundResource(R.drawable.custom_search_view);
 
-		
+		//change log
+		ChangeLog cl = new ChangeLog(this);
+        if (cl.isFirstRun())
+		{
+            cl.getLogDialog().show();
+		}
 		//Make package name folder in android folder 
 		File file = this.getBaseContext().getExternalFilesDir("DevSan");
 		if (!file.exists())
@@ -107,11 +87,11 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
 				}
 			});
-		
-			
-			myDbHelper = new DatabaseHelper(this);
 
-        if(myDbHelper.checkDataBase())
+
+		myDbHelper = new DatabaseHelper(this);
+
+        if (myDbHelper.checkDataBase())
         {
             openDatabase();
 
@@ -130,27 +110,29 @@ implements NavigationView.OnNavigationItemSelectedListener {
         final int[] to = new int[] {R.id.suggestion_text};
 
         suggestionAdapter = new SimpleCursorAdapter(MainActivity.this,
-                R.layout.suggestion_row, null, from, to, 0){
+													R.layout.suggestion_row, null, from, to, 0){
             @Override
-            public void changeCursor(Cursor cursor) {
+            public void changeCursor(Cursor cursor)
+			{
                 super.swapCursor(cursor);
             }
 
         };
-		
+
 		search.setSuggestionsAdapter(suggestionAdapter);
 
 
         search.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
 				@Override
-				public boolean onSuggestionClick(int position) {
+				public boolean onSuggestionClick(int position)
+				{
 
 					// Add clicked text to search box
 					CursorAdapter ca = search.getSuggestionsAdapter();
 					Cursor cursor = ca.getCursor();
 					cursor.moveToPosition(position);
 					String clicked_word =  cursor.getString(cursor.getColumnIndex("en_word"));
-					search.setQuery(clicked_word,false);
+					search.setQuery(clicked_word, false);
 
 					//search.setQuery("",false);
 
@@ -159,7 +141,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
 					Intent intent = new Intent(MainActivity.this, WordMeaningActivity.class);
 					Bundle bundle = new Bundle();
-					bundle.putString("en_word",clicked_word);
+					bundle.putString("en_word", clicked_word);
 					intent.putExtras(bundle);
 					startActivity(intent);
 
@@ -167,7 +149,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
 				}
 
 				@Override
-				public boolean onSuggestionSelect(int position) {
+				public boolean onSuggestionSelect(int position)
+				{
 					// Your code here
 					return true;
 				}
@@ -184,7 +167,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 				{
 
 					String text =  search.getQuery().toString();
-					
+
 					try
 					{
 						out = new String(text.getBytes("UTF-8"), "ISO-8859-1");
@@ -195,11 +178,11 @@ implements NavigationView.OnNavigationItemSelectedListener {
 					Pattern p = Pattern.compile("[^A-Za-z \\-.]{1,25}");
 					Matcher m = p.matcher(out);
 
-					if(m.matches())
+					if (m.matches())
 					{
 						Cursor c = myDbHelper.getMeaning(text);
 
-						if(c.getCount()==0)
+						if (c.getCount() == 0)
 						{
 							showAlertDialog();
 						}
@@ -212,7 +195,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
 							Intent intent = new Intent(MainActivity.this, WordMeaningActivity.class);
 							Bundle bundle = new Bundle();
-							bundle.putString("en_word",text);
+							bundle.putString("en_word", text);
 							intent.putExtras(bundle);
 							startActivity(intent);
 
@@ -231,7 +214,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
 
 
 				@Override
-				public boolean onQueryTextChange(final String s) {
+				public boolean onQueryTextChange(final String s)
+				{
 					search.setIconifiedByDefault(false); //Give Suggestion list margins
 
 					try
@@ -240,11 +224,12 @@ implements NavigationView.OnNavigationItemSelectedListener {
 					}
 					catch (UnsupportedEncodingException e)
 					{}
-					
+
 					Pattern p = Pattern.compile("[^A-Za-z \\-.]{1,25}");
 					Matcher m = p.matcher(sugg);
 
-					if(m.matches()) {
+					if (m.matches())
+					{
 						Cursor cursorSuggestion=myDbHelper.getSuggestions(s);
 						suggestionAdapter.changeCursor(cursorSuggestion);
 					}
@@ -253,25 +238,28 @@ implements NavigationView.OnNavigationItemSelectedListener {
 					return false;
 				}
 
-			});
-		
-			
-			
-		
-		}
+			});	
+
+
+	}
 	protected static void openDatabase()
     {
-        try {
+        try
+		{
             myDbHelper.openDataBase();
-            databaseOpened=true;
-        } catch (SQLException e) {
+            databaseOpened = true;
+        }
+		catch (SQLException e)
+		{
             e.printStackTrace();
         }
     }
-	
+
+
+
 	private void showAlertDialog()
     {
-        search.setQuery("",false);
+        search.setQuery("", false);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.MyDialogTheme);
         builder.setTitle("Word Not Found");
@@ -281,7 +269,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
         builder.setPositiveButton(positiveText,
 			new DialogInterface.OnClickListener() {
 				@Override
-				public void onClick(DialogInterface dialog, int which) {
+				public void onClick(DialogInterface dialog, int which)
+				{
 					// positive button logic
 				}
 			});
@@ -290,7 +279,8 @@ implements NavigationView.OnNavigationItemSelectedListener {
         builder.setNegativeButton(negativeText,
 			new DialogInterface.OnClickListener() {
 				@Override
-				public void onClick(DialogInterface dialog, int which) {
+				public void onClick(DialogInterface dialog, int which)
+				{
 					search.clearFocus();
 				}
 			});
@@ -300,54 +290,43 @@ implements NavigationView.OnNavigationItemSelectedListener {
         dialog.show();
 
     }
-	
+
 	@SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+	{
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.home) {
+        if (id == R.id.home)
+		{
             // Handle the camera action
-        } else if (id == R.id.dev) {
-			
-			Intent intent=new Intent(MainActivity.this,DeveloperActivity.class);
+        }
+		else if (id == R.id.dev)
+		{
+
+			Intent intent=new Intent(MainActivity.this, DeveloperActivity.class);
 			startActivity(intent);
 			return true;
 
-        } else if (id == R.id.about) {
-
-				new AlertDialog.Builder(this)
-				.setTitle("Hi")
-				.setMessage(R.string.dialogue)
-				.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				})
-
-				.setOnDismissListener(new DialogInterface.OnDismissListener() {
-					@Override
-					public void onDismiss(DialogInterface dialog) {
-						//open activity
-						Intent intent_a=new Intent(MainActivity.this,AboutActivity.class);
-						startActivity(intent_a);
-						return ;
-					}
-				}).create().show();
-			
-			/* Intent intent_a=new Intent(MainActivity.this,AboutActivity.class);
+        }
+		else if (id == R.id.about)
+		{
+			Intent intent_a=new Intent(MainActivity.this, AboutActivity.class);
 			startActivity(intent_a);
-			return true; */
+			return true; 
 
-        }  else if (id == R.id.contribute) {
+        }
+		else if (id == R.id.contribute)
+		{
 
-			Intent intent_c=new Intent(MainActivity.this,ContributionActivity.class);
+			Intent intent_c=new Intent(MainActivity.this, ContributionActivity.class);
 			startActivity(intent_c);
 			return true;
 
-		} else if (id == R.id.share) {
+		}
+		else if (id == R.id.share)
+		{
 
 			ApplicationInfo api = getApplicationContext().getApplicationInfo();
 			String filePath = api.sourceDir;
@@ -360,26 +339,34 @@ implements NavigationView.OnNavigationItemSelectedListener {
 			startActivity(Intent.createChooser(intent, "Share Using..."));
 
 		}
+		else if (id == R.id.more)
+		{
 
-        
+			Uri uri = Uri.parse("https://devsancom.blogspot.com");
+			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(intent);
+		}
+
+
         d.closeDrawer(GravityCompat.START);
         return true;
     }
-	
+
 	@Override
-    public void onBackPressed() {
-		if (interstitialAd.isLoaded()) {
-			interstitialAd.show();
-			interstitialAd.setAdListener(new AdListener() {
-					@Override
-					public void onAdClosed() {
-						super.onAdClosed();
-						finish();
-					}
-				});
-		}else{
-			super.onBackPressed();
-		 }
- 
+    public void onBackPressed()
+	{
+
+		super.onBackPressed();
+
 	}
-}
+
+	public static class DarkThemeChangeLog extends ChangeLog
+	{
+        public static final String DARK_THEME_CSS =
+		"body { color: #ffffff; background-color: #282828; }" + "\n" + DEFAULT_CSS;
+
+        public DarkThemeChangeLog(Context context)
+		{
+            super(new ContextThemeWrapper(context, R.style.DarkTheme), DARK_THEME_CSS);
+        }
+	}}

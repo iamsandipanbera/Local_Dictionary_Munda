@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+	<release version="1.1.0" versioncode="110">
+        <change>More New Words Added</change>
+		<change>Now Similar Words Can Be Differntiate.' মুন্ডারী/বাংলা ' View added in Words.</change>
+		<change>Bug Fix.</change>
+		<change>Few Minor Improvements.</change>
+    </release>
+    <release version="1.1" versioncode="11" >
+        <change>Fixed: Now Words Searching Available In Bengali Language</change>
+		<change>More New Words Added</change>
+		<change>Search Bar Design Changed</change>
+		<change>App Beautification and Improvements</change>
+		<change>Bug Fixes and Performance Improvements</change>
+    </release>
+
+    <release version="1.0" versioncode="1">
+        <change>First release</change>
+    </release>
+</changelog>

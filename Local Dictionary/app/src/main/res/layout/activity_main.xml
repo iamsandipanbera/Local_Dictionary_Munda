@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -5,26 +6,26 @@
 	android:fitsSystemWindows="true"
 	android:layout_height="match_parent"
 	android:id="@+id/mainDrawerLayout">
-	
+
 	<android.support.design.widget.CoordinatorLayout
 		android:layout_width="match_parent"
 		android:animateLayoutChanges="true"
 		android:fitsSystemWindows="true"
 		android:layout_height="match_parent">
-		
-		<android.support.design.widget.AppBarLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-				<android.support.v7.widget.Toolbar
-					android:id="@+id/mainToolbar"
-					android:layout_width="match_parent"
-					android:layout_height="?attr/actionBarSize"
-					android:background="?attr/colorPrimary"
-					app:layout_scrollFlags="scroll|enterAlways"
-					app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-				
+		<android.support.design.widget.AppBarLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+			<android.support.v7.widget.Toolbar
+				android:id="@+id/mainToolbar"
+				android:layout_width="match_parent"
+				android:layout_height="?attr/actionBarSize"
+				android:background="?attr/colorPrimary"
+				app:layout_scrollFlags="scroll|enterAlways"
+				app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -39,49 +40,50 @@
 					android:layout_marginLeft="15dp"
 					android:layout_marginRight="15dp"
 					android:layout_marginBottom="15dp"
-					android:background="@color/white"
+					android:background="@drawable/custom_search_view"
 					android:theme="@style/SearchTextViewTheme"
+					android:submitBackground="@drawable/custom_search_view"
 					android:clickable="true"
 					android:focusable="true"
 					app:queryHint="Type Word..."
-					app:searchIcon="@drawable/ic_search"/>
-
+					app:showAsAction="always"
+					app:searchIcon="@drawable/ic_search"
+					android:elevation="8dp"/>
 
 			</LinearLayout>
 
-			</android.support.design.widget.AppBarLayout>
+		</android.support.design.widget.AppBarLayout>
 
-		<RelativeLayout
-			xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:background="#FFFFFF">
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:textAlignment="center"
-				android:textColor="#313131"
-				android:textSize="22sp"
-				android:text="Type Bengali Word In English And Search "
-				android:layout_centerInParent="true"
-				android:gravity="center"/>
-
-
-			<com.google.android.gms.ads.AdView
-				xmlns:ads="http://schemas.android.com/apk/res-auto"
-				android:id="@+id/adView"
+			<RelativeLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_centerHorizontal="true"
-				android:layout_alignParentBottom="true"
-				ads:adSize="LARGE_BANNER"
-				ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+				android:id="@+id/empty_history"
+				android:layout_marginTop="160dp"
+				android:visibility="visible"
+				android:gravity="center">
 
-			</com.google.android.gms.ads.AdView>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textAlignment="center"
+					android:textColor="#313131"
+					android:textSize="22sp"
+					android:text="Type In Bengali And Search Your Desired Words"
+					android:layout_centerInParent="true"
+					android:gravity="center"
+					android:padding="10dp"
+					android:layout_marginTop="20dp"/>
 
+			</RelativeLayout>
 
-		</RelativeLayout>
-	
+		</LinearLayout>
+
 	</android.support.design.widget.CoordinatorLayout>
 
 	<android.support.design.widget.NavigationView
@@ -95,3 +97,4 @@
 		app:menu="@menu/menu_nav"/>
 
 </android.support.v4.widget.DrawerLayout>
+
